@@ -118,11 +118,10 @@ bpPBO$lt120 <- bpPBO$postTRT<120
 
 ```{r}
 combinedTRT_list <- list(treatment = bp, placebo = bpPBO)
-#| echo: false
-#| eval: false
-str(combinedTRT_list)
-names(combinedTRT_list)
-attributes(combinedTRT_list)
+
+#str(combinedTRT_list)
+#names(combinedTRT_list)
+#attributes(combinedTRT_list)
 ```
 
 3.  Access the first list element using three different types of syntax
@@ -131,13 +130,13 @@ attributes(combinedTRT_list)
 #as data-frame
 trtlist_as_df <- combinedTRT_list[[1]]
 str(trtlist_as_df)
-typeof(trtlist_as_df)
-print(trtlist_as_df)
+#typeof(trtlist_as_df)
+#print(trtlist_as_df)
 
 #as list
 combinedTRT_list[1]
-typeof(combinedTRT_list[1])
-attributes(combinedTRT_list[1])
+#typeof(combinedTRT_list[1])
+#attributes(combinedTRT_list[1])
 
 #as var
 combinedTRT_list$treatment
@@ -146,7 +145,5 @@ combinedTRT_list$treatment
 4.  Access pre_bp column of placebo data frame
 
 ```{r}
-str(combinedTRT_list)
 combinedTRT_list$placebo[[2]]
-names(combinedTRT_list$placebo[2])
 ```
