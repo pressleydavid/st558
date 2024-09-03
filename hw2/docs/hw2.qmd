@@ -1,0 +1,126 @@
+---
+title: "hw2"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Task 1
+
+1. Create two vectors
+```{r}
+preTRT <- c(120, 151, 125, 126, 115, 132, 132, 129, 134, 139, 127, 122, 127, 135, 133, 128, 147, 138, 140, 132)
+postTRT <- c(127, 145, 135, 122, 115, 122, 123, 126, 126, 129, 132, 146, 120, 114, 121, 120, 128, 120, 133, 115)
+```
+
+2. Assign names to vector elements
+
+```{r}
+patient = paste("Subject", 1:20, sep = "_")
+setNames(preTRT,patient)
+setNames(postTRT,patient)
+```
+
+3. Calculate the change in blood pressure. Save as a new object
+```{r}
+diffTRT <- preTRT - postTRT
+print(diffTRT)
+diffTRT<-setNames(diffTRT,patient)
+```
+
+4. Calculate the average change from pre-treatment
+```{r}
+mean(diffTRT)
+```
+```{r,eval=FALSE,echo=FALSE}
+#| echo: false
+#| eval: false
+#check calculation
+#diffTRT[diffTRT<0]
+#num_vector <- scan(text = "-6  -4 -10  -9  -3  -8 -10  -7 -21 -12  -8 -19 -18  -7 -17", what = numeric(), quiet = TRUE)
+#mean(num_vector)
+```
+
+5. Determine which patients experienced a decrease 
+```{r}
+print(which(diffTRT > 0, arr.ind = TRUE), useNames=TRUE)
+```
+6. Subset the vector of differences to only return those that have a positive change
+```{r}
+diffTRT[diffTRT>0]
+```
+7. Calculate the average decrease
+```{r}
+mean(diffTRT[diffTRT>0])
+```
+
+# Task 2
+
+1. Create dataframe with 4 columns from Task 1
+```{r}
+bp <- data.frame(patient,preTRT,postTRT,diffTRT,row.names=NULL)
+str(bp)
+attributes(bp)
+```
+
+2. Return only rows of the data frame where the diff_bp column is negative
+```{r}
+names(bp)
+negative_diff <- subset(bp,bp$diffTRT<0)
+```
+
+3. Add new column if postTRT is < 120
+```{r}
+bp$lt120 <- bp$postTRT<120
+```
+
+4. Print Data Frame
+```{r}
+knitr::kable(bp)
+```
+
+# Task 3: List Practice
+
+1. Create new data frame for Placebo similar to treatment data frame
+```{r}
+preTRT <- c(138, 135, 147, 117, 152, 134, 114, 121, 131, 130)
+postTRT <- c(105, 136, 123, 130, 134, 143, 135, 139, 120, 124)
+
+patient = paste("PBO_Subject", 1:10, sep = "_")
+setNames(preTRT,patient)
+setNames(postTRT,patient)
+
+diffTRT <- preTRT - postTRT
+print(diffTRT)
+diffTRT<-setNames(diffTRT,patient)
+
+bpPBO <- data.frame(patient,preTRT,postTRT,diffTRT,row.names=NULL)
+str(bp)
+attributes(bp)
+
+bpPBO$lt120 <- bpPBO$postTRT<120
+```
+
+2. Create and store a list with two elements (treeatment, placebo)
+```{r}
+combinedTRT_list <- list(treatment = bp, placebo = bpPBO)
+str(combinedTRT_list)
+names(combinedTRT_list)
+attributes(combinedTRT_list)
+```
+
+3. Access the first list element using three different types of syntax
+```{r}
+combinedTRT_list
+combinedTRT_list[1]
+attributes(combinedTRT_list[1])
+```
+
+4. Access pre_bp column of placebo data frame
+```{r}
+str(combinedTRT_list)
+combinedTRT_list$placebo[[2]]
+```
