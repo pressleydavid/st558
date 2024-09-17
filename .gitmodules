@@ -1,0 +1,9 @@
+[submodule "homework/hw3"]
+	path = homework/hw3
+	url = https://github.com/pressleydavid/hw3.git
+[submodule "homework/hw4"]
+	path = homework/hw4
+	url = https://github.com/pressleydavid/hw4.git
+[submodule "homework/hw1"]
+	path = homework/hw1
+	url = https://github.com/pressleydavid/st558_hw1.git
