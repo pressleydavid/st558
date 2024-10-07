@@ -7,3 +7,9 @@
 [submodule "homework/hw1"]
 	path = homework/hw1
 	url = https://github.com/pressleydavid/st558_hw1.git
+[submodule "St558_Project_1"]
+	path = St558_Project_1
+	url = https://github.com/ethanmarburger/St558_Project_1.git
+[submodule "p1"]
+	path = p1
+	url = https://github.com/pressleydavid/p1.git
