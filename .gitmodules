@@ -13,3 +13,6 @@
 [submodule "p1"]
 	path = p1
 	url = https://github.com/pressleydavid/p1.git
+[submodule "projects/p1"]
+	path = projects/p1
+	url = https://github.com/pressleydavid/p1.git
